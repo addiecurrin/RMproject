@@ -55,7 +55,7 @@ merged_oz <- rac_clean %>%
   left_join(acs_oz, ., by = "GEOID") %>% 
   mutate(treatment = as.numeric(DESIGNATED),
          # this should be if the year is 2018
-         post = if_else(year == 2018, 1, 0),
+         post = if_else(year >= 2018, 1, 0),
          year_fact = factor(year, levels = c(2014:2019)),
          geoid_fact = factor(GEOID))
 
